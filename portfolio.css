@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #101522;
+    color: #f6f6f6;
+    line-height: 1.6;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #1976d2 30%, #101522 100%);
+    text-align: center;
+}
+.hero-content h1 {
+    font-size: 7.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+.container h1 {
+    font-size: 2.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+.tagline {
+    margin-bottom: 0;
+}
+.icons {
+    margin-top: 0;
+}
+.icons a {
+    color: #fff;
+    margin: 0 6px;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+}
+.icons a:hover {
+    color: #66fcf1;
+}
+section {
+    padding: 0 10%;
+    max-width: 1200px;
+    margin: auto;
+}
+h2 {
+    color: #66fcf1;
+    border-left: 5px solid #1976d2;
+    padding-left: 15px;
+    margin-bottom: 18px;
+}
+.skills-grid, .certificates ul, .education ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+.skill-card {
+    background: #233554;
+    color: #fff;
+    padding: 18px 20px;
+    border-radius: 8px;
+    min-width: 140px;
+    text-align: center;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+.skill-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 24px rgba(102,252,241,0.09);
+}
+.project-card, .internship-card {
+    background: #162447;
+    padding: 22px 30px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.project-card h3, .internship-card h3 {
+    color: #fff;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li::before {
+    content: "• ";
+    color: #66fcf1;
+}
+.resume-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 30px;
+    border-radius: 25px;
+    background: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 16px rgba(25,118,210,0.18);
+    transition: background 0.3s;
+}
+.resume-btn:hover {
+    background: #66fcf1;
+    color: #101522;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 10px;
+}
+input, textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+button[type="submit"] {
+    padding: 12px;
+    border-radius: 5px;
+    background: #66fcf1;
+    border: none;
+    color: #101522;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+button[type="submit"]:hover {
+    background: #1976d2;
+    color: #fff;
+}
+.container {
+    display: block;
+}
+
+/* Center the first section's header content */
+.container .section:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.section {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.section:first-child {
+    margin-top: 0;
+}
+.skills-list {
+    margin: 0;
+    padding-left: 20px;
+}
+.skills-list li {
+    margin-bottom: 4px;
+    line-height: 1.5;
+}
+@media (max-width: 750px) {
+    section { padding: 40px 5%;}
+    .skills-grid, .certificates ul, .education ul {flex-direction: column;}
+}
