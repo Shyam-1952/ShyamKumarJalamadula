@@ -76,14 +76,24 @@ h2 {
 }
 .project-card h3, .internship-card h3 {
     color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Inline project location next to company name */
+.project-card h3 .project-location {
+    color: #cfeff3; /* soft white/teal to differentiate slightly */
+    font-weight: 600;
+    margin-left: 8px;
+    font-size: 0.95em;
+}
+
+.project-card p {
+    margin-bottom: 15px;
 }
 ul {
     list-style: none;
     padding: 0;
-}
-li::before {
-    content: "• ";
-    color: #66fcf1;
+    width: 100%;
 }
 .resume-btn {
     display: inline-block;
@@ -130,7 +140,11 @@ button[type="submit"]:hover {
     color: #fff;
 }
 .container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 20px;
 }
 
 /* Center the first section's header content */
@@ -142,21 +156,148 @@ button[type="submit"]:hover {
     text-align: center;
 }
 .section {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 15px auto;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 1000px;
+    transform-origin: center;
+    width: 95%;
 }
+
+.section:hover {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 22px 0 rgba(31, 38, 135, 0.37);
+    transform: scale(1.02);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .section:hover {
+        background: rgba(22, 36, 71, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Reduce motion if user prefers it */
+@media (prefers-reduced-motion: reduce) {
+    .section {
+        transition: none;
+    }
+}
+
+/* Adjust for mobile devices */
+@media (max-width: 768px) {
+    .section:hover {
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+}
+
 .section:first-child {
-    margin-top: 0;
+    margin-top: 48px; /* increase top gap so the whole section sits lower on the page */
+    /* match other sections' width but reduce the top padding so title sits closer to the top border */
+    padding: 8px 30px 18px 30px; /* top right bottom left */
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), background 0.35s ease, box-shadow 0.35s ease;
+    max-width: 1000px;
+    width: 95%;
+    display: block;
+    border-radius: 12px;
+    background: transparent;
 }
-.skills-list {
+
+.container .section:first-child h1 {
+    color: #66fcf1;
+    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), text-shadow 0.35s ease, color 0.35s ease;
+    will-change: transform;
+    margin-top: 0; /* remove default top margin so title sits closer to section top */
+    margin-bottom: 8px;
+}
+
+.container .section:first-child .contact-line {
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), color 0.35s ease;
+    margin-top: 6px;
+}
+
+.container .section:first-child:hover {
+    transform: translateY(-6px) scale(1.045);
+    background: rgba(255,255,255,0.09);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 0 20px 50px rgba(31,38,135,0.40);
+}
+
+.container .section:first-child:hover h1 {
+    transform: scale(1.06);
+    text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    color: #66fcf1;
+}
+
+.container .section:first-child:hover .contact-line {
+    transform: translateY(-4px) scale(1.03);
+    color: #66fcf1;
+}
+.skills-list, .project-card ul, .section ul {
     margin: 0;
     padding-left: 20px;
+    list-style: none;
 }
-.skills-list li {
-    margin-bottom: 4px;
-    line-height: 1.5;
+
+.skills-list li, .project-card li, .section li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 25px;
+}
+
+.skills-list li::before, .project-card li::before, .section li::before {
+    content: "•";
+    color: #66fcf1;
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: -1px;
+}
+
+.skills-list b, .project-card b, .section b {
+    color: #66fcf1;
+    margin-right: 5px;
 }
 @media (max-width: 750px) {
     section { padding: 40px 5%;}
     .skills-grid, .certificates ul, .education ul {flex-direction: column;}
+}
+
+/* Contact line styling (phone and email displayed inline) */
+.contact-line {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #cfeff3;
+}
+.contact-line .contact-item {
+    color: #cfeff3;
+    text-decoration: none;
+    font-weight: 600;
+}
+.contact-line .contact-item:hover {
+    color: #66fcf1;
+}
+.contact-line .sep {
+    color: #66fcf1;
+    opacity: 0.9;
+}
+/* Location text next to email - plain white, no hover color change */
+.contact-line .contact-location {
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 4px;
 }
