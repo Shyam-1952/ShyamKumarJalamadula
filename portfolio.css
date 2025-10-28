@@ -5,6 +5,15 @@ body {
     color: #f6f6f6;
     line-height: 1.6;
 }
+/* Use border-box globally to avoid unexpected width calculations and remove horizontal scroll */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling caused by elements slightly wider than viewport */
+html, body {
+    overflow-x: hidden;
+}
 .hero {
     display: flex;
     align-items: center;
@@ -14,7 +23,7 @@ body {
     text-align: center;
 }
 .hero-content h1 {
-    font-size: 7.2rem;
+    font-size: 6.2rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
 }
@@ -24,7 +33,8 @@ body {
     margin-bottom: 0;
 }
 .tagline {
-    margin-bottom: 0;
+    margin: 0; /* remove spacing between name and tagline */
+    padding: 0;
 }
 .icons {
     margin-top: 0;
@@ -220,12 +230,14 @@ button[type="submit"]:hover {
     transition: transform 0.45s cubic-bezier(.2,.8,.2,1), text-shadow 0.35s ease, color 0.35s ease;
     will-change: transform;
     margin-top: 0; /* remove default top margin so title sits closer to section top */
-    margin-bottom: 8px;
+    margin-bottom: 0; /* remove space below name */
+    font-size: 22pt; /* current size (change earlier requested 1pt, restored here) */
 }
 
 .container .section:first-child .contact-line {
     transition: transform 0.35s cubic-bezier(.2,.8,.2,1), color 0.35s ease;
-    margin-top: 6px;
+    margin-top: 0; /* remove gap between tagline and contact-line */
+    padding-top: 0;
 }
 
 .container .section:first-child:hover {
@@ -293,7 +305,7 @@ button[type="submit"]:hover {
 
 /* Contact line styling (phone and email displayed inline) */
 .contact-line {
-    margin-top: 8px;
+    margin-top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,4 +330,100 @@ button[type="submit"]:hover {
     color: #ffffff;
     font-weight: 500;
     margin-left: 4px;
+}
+
+/* ------------------------
+   Cross-device / Mobile improvements
+   - Reduce heavy blur and transforms on touch devices
+   - Tweak paddings and font-sizes for small viewports
+   - Allow contact-line to wrap
+   ------------------------ */
+@media (max-width: 768px) {
+    /* Make container and sections use full width with symmetric padding */
+    .container {
+        padding: 12px;
+        align-items: stretch; /* allow children to fill width */
+    }
+
+    .container h1 {
+        font-size: 2.2rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .section {
+        /* use box-sizing so padding doesn't change total width and keep symmetric left/right spacing */
+        box-sizing: border-box;
+        padding: 16px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 12px auto;
+    }
+
+    /* Disable heavy backdrop blur & transforms on phones for performance/readability */
+    .section:hover {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        transform: none;
+        box-shadow: 0 6px 18px rgba(31,38,135,0.14);
+        background: rgba(22,36,71,0.88);
+        border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .container .section:first-child {
+        padding: 10px 16px;
+        margin-top: 36px;
+    }
+
+    .container .section:first-child:hover {
+        transform: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: 0 12px 30px rgba(31,38,135,0.18);
+        background: rgba(255,255,255,0.04);
+    }
+
+    .container .section:first-child h1 {
+        font-size: 2rem;
+    }
+
+    /* Make contact-line wrap nicely on small screens */
+    .contact-line {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .contact-line .contact-location {
+        margin-left: 0;
+    }
+
+    .project-card, .internship-card {
+        padding: 16px;
+    }
+
+    .skills-list li, .project-card li, .section li {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container h1 { font-size: 1.85rem; }
+    .container .section:first-child h1 { font-size: 1.7rem; }
+    .project-card h3 { font-size: 1rem; }
+    .project-card h3 .project-location { display: block; margin-left: 0; margin-top: 4px; font-size: 0.95em; }
+    .project-card, .internship-card { padding: 14px; }
+    .contact-line { font-size: 0.95rem; gap: 4px; }
+}
+
+/* Prefer no hover/less motion on touch devices (pointer:coarse or no-hover) */
+@media (hover: none), (pointer: coarse) {
+    .section:hover, .container .section:first-child:hover {
+        transform: none !important;
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        box-shadow: 0 8px 20px rgba(31,38,135,0.16) !important;
+    }
 }
