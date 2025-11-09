@@ -1,429 +1,167 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #101522;
-    color: #f6f6f6;
+    font-family: sans-serif;
     line-height: 1.6;
-}
-/* Use border-box globally to avoid unexpected width calculations and remove horizontal scroll */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Prevent horizontal scrolling caused by elements slightly wider than viewport */
-html, body {
-    overflow-x: hidden;
-}
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(120deg, #1976d2 30%, #101522 100%);
-    text-align: center;
-}
-.hero-content h1 {
-    font-size: 6.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-}
-.container h1 {
-    font-size: 2.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 0;
-}
-.tagline {
-    margin: 0; /* remove spacing between name and tagline */
-    padding: 0;
-}
-.icons {
-    margin-top: 0;
-}
-.icons a {
-    color: #fff;
-    margin: 0 6px;
-    font-size: 1.3rem;
-    transition: color 0.3s;
-}
-.icons a:hover {
-    color: #66fcf1;
-}
-section {
-    padding: 0 10%;
-    max-width: 1200px;
-    margin: auto;
-}
-h2 {
-    color: #66fcf1;
-    border-left: 5px solid #1976d2;
-    padding-left: 15px;
-    margin-bottom: 18px;
-}
-.skills-grid, .certificates ul, .education ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-.skill-card {
-    background: #233554;
-    color: #fff;
-    padding: 18px 20px;
-    border-radius: 8px;
-    min-width: 140px;
-    text-align: center;
-    font-weight: 500;
-    transition: transform 0.2s;
-}
-.skill-card:hover {
-    transform: scale(1.06);
-    box-shadow: 0 8px 24px rgba(102,252,241,0.09);
-}
-.project-card, .internship-card {
-    background: #162447;
-    padding: 22px 30px;
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-.project-card h3, .internship-card h3 {
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-/* Inline project location next to company name */
-.project-card h3 .project-location {
-    color: #cfeff3; /* soft white/teal to differentiate slightly */
-    font-weight: 600;
-    margin-left: 8px;
-    font-size: 0.95em;
-}
-
-.project-card p {
-    margin-bottom: 15px;
-}
-ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-}
-.resume-btn {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 12px 30px;
-    border-radius: 25px;
-    background: #1976d2;
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 2px 16px rgba(25,118,210,0.18);
-    transition: background 0.3s;
-}
-.resume-btn:hover {
-    background: #66fcf1;
-    color: #101522;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    gap: 10px;
-}
-input, textarea {
-    padding: 12px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-}
-button[type="submit"] {
-    padding: 12px;
-    border-radius: 5px;
-    background: #66fcf1;
-    border: none;
-    color: #101522;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-button[type="submit"]:hover {
-    background: #1976d2;
-    color: #fff;
-}
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px 20px;
-}
-
-/* Center the first section's header content */
-.container .section:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.section {
-    margin: 15px auto;
-    position: relative;
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 1000px;
-    transform-origin: center;
-    width: 95%;
-}
-
-.section:hover {
-    background: rgba(255, 255, 255, 0.1);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 22px 0 rgba(31, 38, 135, 0.37);
-    transform: scale(1.02);
-}
-
-/* Better fallback for browsers that don't support backdrop-filter */
-@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
-    .section:hover {
-        background: linear-gradient(
-            to bottom right,
-            rgba(255, 255, 255, 0.2),
-            rgba(22, 36, 71, 0.9)
-        );
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
-    }
-}
-
-/* Reduce motion if user prefers it */
-@media (prefers-reduced-motion: reduce) {
-    .section {
-        transition: none;
-    }
-}
-
-/* Adjust for mobile devices */
-@media (max-width: 768px) {
-    .section:hover {
-        -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);
-    }
-}
-
-.section:first-child {
-    margin-top: 48px; /* increase top gap so the whole section sits lower on the page */
-    /* match other sections' width but reduce the top padding so title sits closer to the top border */
-    padding: 8px 30px 18px 30px; /* top right bottom left */
-    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), background 0.35s ease, box-shadow 0.35s ease;
-    max-width: 1000px;
-    width: 95%;
-    display: block;
-    border-radius: 12px;
-    background: transparent;
-}
-
-.container .section:first-child h1 {
-    color: #66fcf1;
-    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), text-shadow 0.35s ease, color 0.35s ease;
-    will-change: transform;
-    margin-top: 0; /* remove default top margin so title sits closer to section top */
-    margin-bottom: 0; /* remove space below name */
-    font-size: 22pt; /* current size (change earlier requested 1pt, restored here) */
-}
-
-.container .section:first-child .contact-line {
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), color 0.35s ease;
-    margin-top: 0; /* remove gap between tagline and contact-line */
-    padding-top: 0;
-}
-
-.container .section:first-child:hover {
-    transform: translateY(-6px) scale(1.045);
-    background: rgba(255,255,255,0.09);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.09);
-    box-shadow: 0 20px 50px rgba(31,38,135,0.40);
-}
-
-/* Better fallback for header hover when backdrop-filter isn't supported */
-@supports not ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
-    .container .section:first-child:hover {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.15),
-            rgba(22, 36, 71, 0.95)
-        );
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 20px 50px rgba(31, 38, 135, 0.3);
-    }
-}
-
-.container .section:first-child:hover h1 {
-    transform: scale(1.06);
-    text-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    color: #66fcf1;
-}
-
-.container .section:first-child:hover .contact-line {
-    transform: translateY(-4px) scale(1.03);
-    color: #66fcf1;
-}
-.skills-list, .project-card ul, .section ul {
     margin: 0;
-    padding-left: 20px;
+    padding: 0;
+    /* Existing background will be overridden by the new gradient */
+    color: #000;
+    background: radial-gradient(circle at center, #b3e0ff, #c9a0dc); /* Slightly more vibrant natural sky-like gradient */
+    background-attachment: fixed; /* Ensures the gradient covers the whole page and doesn't scroll */
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    overflow: hidden;
+    padding: 20px 0; /* Add some vertical padding to the container */
+}
+
+/* Glassmorphism effect for sections */
+.section {
+    padding: 20px;
+    margin: 20px auto 40px auto; /* Center sections and add margin, increased bottom margin */
+    background: rgba(255, 255, 255, 0.1); /* Very low tint for extreme transparency */
+    border-radius: 15px; /* Slightly more rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* More subtle light border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    -webkit-backdrop-filter: blur(20px); /* Increased blur effect */
+    backdrop-filter: blur(20px); /* Safari support */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    max-width: 950px; /* Limit section width for better readability */
+}
+
+/* ... */
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    /* Existing background will be overridden by the new gradient */
+    color: #000;
+    background: radial-gradient(circle at center, #b3e0ff, #c9a0dc); /* Slightly more vibrant natural sky-like gradient */
+    background-attachment: fixed; /* Ensures the gradient covers the whole page and doesn't scroll */
+    font-size: 1.1em; /* Slightly increase base font size */
+}
+
+/* Hover effect for sections */
+.section:hover {
+    background: rgba(255, 255, 255, 0); /* Completely transparent on hover */
+    box-shadow: 0 0 20px 5px rgba(179, 224, 255, 0.1), 0 0 25px 10px rgba(201, 160, 220, 0.8); /* Enhanced shadow */
+    backdrop-filter: blur(30px); /* Further increased blur on hover */
+    -webkit-backdrop-filter: blur(30px); /* Safari support */
+    transform: scale(1.05); /* Slight lift effect */
+}
+
+h1, h2, h3 {
+    color: #000; /* Black text for headings */
+}
+
+.skills-list, .project-card ul, .section ul {
     list-style: none;
+    padding: 0;
 }
 
 .skills-list li, .project-card li, .section li {
-    margin-bottom: 12px;
-    line-height: 1.6;
-    position: relative;
-    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #000; /* Black text for list items */
 }
 
-.skills-list li::before, .project-card li::before, .section li::before {
-    content: "•";
-    color: #66fcf1;
-    font-size: 1.2em;
-    position: absolute;
-    left: 0;
-    top: -1px;
+.project-card {
+    margin-bottom: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 15px; /* Add some padding inside the card */
 }
 
-.skills-list b, .project-card b, .section b {
-    color: #66fcf1;
-    margin-right: 5px;
-}
-@media (max-width: 750px) {
-    section { padding: 40px 5%;}
-    .skills-grid, .certificates ul, .education ul {flex-direction: column;}
-}
-
-/* Contact line styling (phone and email displayed inline) */
-.contact-line {
-    margin-top: 0;
+/* Header section styling (assuming a class 'header-section' for the name and role) */
+.header-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    font-size: 1rem;
-    color: #cfeff3;
-}
-.contact-line .contact-item {
-    color: #cfeff3;
-    text-decoration: none;
-    font-weight: 600;
-}
-.contact-line .contact-item:hover {
-    color: #66fcf1;
-}
-.contact-line .sep {
-    color: #66fcf1;
-    opacity: 0.9;
-}
-/* Location text next to email - plain white, no hover color change */
-.contact-line .contact-location {
-    color: #ffffff;
-    font-weight: 500;
-    margin-left: 4px;
+    flex-direction: column;
+    padding-top: 10px; /* Reduce top padding */
+    padding-bottom: 40px; /* Increase bottom padding for balance */
+    margin-top: 10px; /* Reduce top margin */
+    margin-bottom: 20px; /* Increase bottom margin for balance */
+    color: #000; /* Black text */
 }
 
-/* ------------------------
-   Cross-device / Mobile improvements
-   - Reduce heavy blur and transforms on touch devices
-   - Tweak paddings and font-sizes for small viewports
-   - Allow contact-line to wrap
-   ------------------------ */
+.header-section h1 {
+    font-size: 2.1em;
+    margin-bottom: 0;
+    text-align: center;
+    transform: translateY(-5px); /* Adjust to visually balance internal gaps */
+    line-height: 1.1; /* Reduce vertical spacing */
+}
+
+.header-section p {
+    font-size: 1.0em;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.1; /* Reduce vertical spacing */
+}
+
+.contact-line {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0; /* Remove default margins */
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-    /* Make container and sections use full width with symmetric padding */
     .container {
-        padding: 12px;
-        align-items: stretch; /* allow children to fill width */
-    }
-
-    .container h1 {
-        font-size: 2.2rem;
-    }
-
-    .tagline {
-        font-size: 1rem;
+        width: 95%; /* Adjust container width for tablets */
+        padding: 10px 0;
     }
 
     .section {
-        /* use box-sizing so padding doesn't change total width and keep symmetric left/right spacing */
-        box-sizing: border-box;
-        padding: 16px;
-        width: 100%;
-        max-width: 1000px;
-        margin: 12px auto;
+        margin: 15px auto; /* Adjust section margin */
+        padding: 15px;
     }
 
-    /* Disable heavy backdrop blur & transforms on phones for performance/readability */
-    .section:hover {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        transform: none;
-        box-shadow: 0 6px 18px rgba(31,38,135,0.14);
-        background: rgba(22,36,71,0.88);
-        border: 1px solid rgba(255,255,255,0.04);
+    .header-section h1 {
+        font-size: 2.5em; /* Smaller font size for header on tablets */
     }
 
-    .container .section:first-child {
-        padding: 10px 16px;
-        margin-top: 36px;
-    }
-
-    .container .section:first-child:hover {
-        transform: none;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        box-shadow: 0 12px 30px rgba(31,38,135,0.18);
-        background: rgba(255,255,255,0.04);
-    }
-
-    .container .section:first-child h1 {
-        font-size: 2rem;
-    }
-
-    /* Make contact-line wrap nicely on small screens */
-    .contact-line {
-        flex-wrap: wrap;
-        gap: 6px;
-        justify-content: center;
-    }
-
-    .contact-line .contact-location {
-        margin-left: 0;
-    }
-
-    .project-card, .internship-card {
-        padding: 16px;
-    }
-
-    .skills-list li, .project-card li, .section li {
-        padding-left: 20px;
+    .header-section p {
+        font-size: 1.2em; /* Smaller font size for role on tablets */
     }
 }
 
-@media (max-width: 420px) {
-    .container h1 { font-size: 1.85rem; }
-    .container .section:first-child h1 { font-size: 1.7rem; }
-    .project-card h3 { font-size: 1rem; }
-    .project-card h3 .project-location { display: block; margin-left: 0; margin-top: 4px; font-size: 0.95em; }
-    .project-card, .internship-card { padding: 14px; }
-    .contact-line { font-size: 0.95rem; gap: 4px; }
+@media (max-width: 480px) {
+    .container {
+        width: 100%; /* Full width for mobile */
+        padding: 5px 0;
+    }
+
+    .section {
+        margin: 10px auto; /* Further adjust section margin */
+        padding: 10px;
+        border-radius: 10px; /* Slightly less rounded corners for smaller screens */
+    }
+
+    .header-section {
+        padding: 30px 10px; /* Adjust header padding */
+    }
+
+    .header-section h1 {
+        font-size: 2em; /* Even smaller font size for header on mobile */
+    }
+
+    .header-section p {
+        font-size: 1em; /* Even smaller font size for role on mobile */
+    }
 }
 
-/* Prefer no hover/less motion on touch devices (pointer:coarse or no-hover) */
-@media (hover: none), (pointer: coarse) {
-    .section:hover, .container .section:first-child:hover {
-        transform: none !important;
-        -webkit-backdrop-filter: none !important;
-        backdrop-filter: none !important;
-        box-shadow: 0 8px 20px rgba(31,38,135,0.16) !important;
-    }
+.professional-summary-text {
+    text-align: justify;
+}
+
+.contact-item {
+    font-weight: bold;
+}
+
+.contact-line a {
+    text-decoration: none;
 }
